@@ -1,0 +1,1 @@
+angular.module('projekt', ['ngRoute', 'appRoutes', 'MainCtrl', 'MainService']);
