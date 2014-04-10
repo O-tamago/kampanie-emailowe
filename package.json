@@ -5,6 +5,8 @@
         "express": "~3.4.8",
         "mongoose": "~3.6.13",
         "passport": "*",
-        "nodemailer": "*"
+        "passport-local": "*",
+        "nodemailer": "*",
+        "connect-flash": "*"
     }
 }

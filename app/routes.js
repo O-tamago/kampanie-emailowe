@@ -1,13 +1,67 @@
-module.exports = function(app) {
+module.exports = function (app) {
 
-	// server routes ===========================================================
-	// handle things like api calls
-	// authentication routes
+    // server routes ===========================================================
+    // handle things like api calls
+    // authentication routes
+    var nodemailer = require('nodemailer');
 
-	// frontend routes =========================================================
-	// route to handle all angular requests
-	app.get('*', function(req, res) {
-		res.sendfile('./public/index.html');
-	});
+    var User = require('./models/User');
+
+    var auth = function (req, res, next) {
+        if (!req.isAuthenticated())
+            res.send(401);
+        else
+            next();
+    };
+    app.get('/api/listOfUsers', auth, function (req, res) {
+        User.find(function (err, data) {
+            if (err)
+                console.log("errors fetchinh");
+            else
+                res.json(data);
+
+        });
+    });
+
+    app.post('/api/sendmail', function (req, res) {
+
+        var smtpTransport = nodemailer.createTransport("SMTP", {
+            service: "Gmail",
+            auth: {
+                user: "nodemailtester@gmail.com",
+                pass: "nodemailtester123"
+            }
+        });
+
+        // setup e-mail data with unicode symbols
+        var mailOptions = {
+            from: "Fred Foo ✔ <foo@blurdybloop.com>", // sender address
+            to: "nodemailtester@gmail.com", // list of receivers
+            subject: "Hello ✔", // Subject line
+            text: "Hello world ✔", // plaintext body
+            html: "<b>Hello world ✔</b>" // html body
+        };
+        smtpTransport.sendMail(mailOptions, function (error, response) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log("Mail sent");
+            }
+        });
+        res.redirect("/");
+    });
+
+
+
+    // frontend routes =========================================================
+    // route to handle all angular requests
+    app.get('*', function (req, res) {
+        res.sendfile('./public/index.html');
+    });
+
+
+
+
+
 
 };

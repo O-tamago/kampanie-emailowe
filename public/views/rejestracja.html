@@ -1,0 +1,19 @@
+<div class="jumbotron text-center">
+
+    <p>{{tagline}}</p>
+    <p>{{message}}</p>
+
+    <form ng-submit="register()">
+        <div>
+            <label>Username:</label>
+            <input type="text" name="username" ng-model="user.username" required autocomplete="off" />
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password" ng-model="user.password" required />
+        </div>
+        <div>
+            <input type="submit" value="Register" />
+        </div>
+    </form>
+</div>

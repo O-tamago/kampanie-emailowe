@@ -1,0 +1,13 @@
+<div class="jumbotron text-center">
+
+    <h1>Witaj {{loggedUser.username}}</h1>
+    <p>
+        <a href="#" ng-click="logout()">Wyloguj</a>
+    </p>
+    <ul>
+        <li ng-repeat="user in listOfUsers">
+            {{user.username}}
+        </li>
+    </ul>
+
+</div>
