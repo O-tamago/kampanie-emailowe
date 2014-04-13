@@ -4,7 +4,7 @@ module.exports = function (app) {
     // handle things like api calls
     // authentication routes
     var nodemailer = require('nodemailer');
-
+    var passport = require('passport');
     var User = require('./models/User');
 
     var auth = function (req, res, next) {
@@ -13,6 +13,27 @@ module.exports = function (app) {
         else
             next();
     };
+
+    app.get('/loggedin', function (req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+    });
+
+    app.post('/rejestracja', passport.authenticate('local-register', {
+        successRedirect: '/',
+        failureRedirect: '/rejestracja',
+        failureFlash: true
+    }));
+    app.post('/login', passport.authenticate('local-login', {
+        successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true
+    }));
+
+    app.post('/logout', function (req, res) {
+        req.logout();
+        res.send(200);
+
+    });
     app.get('/api/listOfUsers', auth, function (req, res) {
         User.find(function (err, data) {
             if (err)
