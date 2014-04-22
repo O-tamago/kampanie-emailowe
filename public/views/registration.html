@@ -3,11 +3,11 @@
     <p>{{tagline}}</p>
     <p>{{message}}</p>
     <div class="container loginFormDiv">
-        <form ng-submit="login()">
 
+        <form ng-submit="register()">
             <div>
                 <label>Username:</label>
-                <input type="text" placeholder="username" class="form-control" name="username" ng-model="user.username" required autocomplete="off" />
+                <input type="text" name="username" ng-model="user.username" placeholder="username" class="form-control" required autocomplete="off" />
             </div>
             <div>
                 <label>Password:</label>
@@ -15,12 +15,12 @@
             </div>
             <div>
                 <br/>
-                <input type="submit" class="btn btn-success" value="Login" />
+                <input type="submit" value="Register" class="btn btn-success" />
             </div>
             <p>
-                <a href="/registration" class="btn btn-link">Register!</a>
-            </p>
 
+                <a href="/login" class="btn btn-link">Login!</a>
+            </p>
         </form>
     </div>
 </div>

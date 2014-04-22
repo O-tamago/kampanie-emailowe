@@ -1,17 +1,18 @@
 angular.module('RegisterCtrl', []).controller('RegisterController', function ($scope, $http, $location, $rootScope) {
-    $scope.tagline = "Rejestracja";
+    $scope.tagline = "Registration page";
     $scope.user = {};
     $scope.register = function () {
-        $http.post('/rejestracja', {
+        $http.post('/registration', {
             username: $scope.user.username,
             password: $scope.user.password
         }).success(function (user) {
+            $http.post('/login', {
+                username: $scope.user.username,
+                password: $scope.user.password
 
-            $location.url('/users');
-
-        }).error(function () {
-            $location.url('/rejestracja');
-
+            }).success(function () {
+                $location.url('/account');
+            });
 
         });
     };

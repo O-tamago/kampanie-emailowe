@@ -36,8 +36,6 @@ app.configure(function () {
 //models
 var User = require('./app/models/User');
 require('./config/passport')(app);
-
-
 require('./app/routes')(app); // pass our application into our routes
 
 
@@ -47,9 +45,10 @@ app.listen(port);
 console.log('Serwer dziala na porcie: ' + port); // shoutout to the user
 console.log("0 = disconnected\n1 = connected\n2 = connecting\n3 = disconnecting");
 console.log("Status polaczenia z baza: " + mongoose.connection.readyState);
+
 setInterval(function () {
     console.log("Status polaczenia z baza: " + mongoose.connection.readyState);
-}, 10000);
+}, 50000);
 
 
 exports = module.exports = app; // expose app

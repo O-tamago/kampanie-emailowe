@@ -48,12 +48,12 @@ angular.module('appRoutes', []).config(function ($routeProvider, $locationProvid
 
     // home page
     .when('/', {
-        templateUrl: 'views/home.html',
-        controller: 'MainController'
+        templateUrl: 'views/login.html',
+        controller: 'LoginController'
     })
-        .when('/users', {
-            templateUrl: 'views/users.html',
-            controller: 'UsersController',
+        .when('/account', {
+            templateUrl: 'views/account.html',
+            controller: 'AccountController',
             resolve: {
                 loggedin: checkLoggedin
             }
@@ -61,8 +61,8 @@ angular.module('appRoutes', []).config(function ($routeProvider, $locationProvid
         }).when('/login', {
             templateUrl: 'views/login.html',
             controller: 'LoginController'
-        }).when('/rejestracja', {
-            templateUrl: 'views/rejestracja.html',
+        }).when('/registration', {
+            templateUrl: 'views/registration.html',
             controller: 'RegisterController'
         }).otherwise({
             redirectTo: '/'
@@ -78,6 +78,8 @@ angular.module('appRoutes', []).config(function ($routeProvider, $locationProvid
         $rootScope.message = 'Logged out.';
         $http.post('/logout').success(function () {
             $location.url('/');
+            $rootScope.loggedIn = false;
+
         });
     };
 });

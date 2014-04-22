@@ -18,11 +18,12 @@ module.exports = function (app) {
         res.send(req.isAuthenticated() ? req.user : '0');
     });
 
-    app.post('/rejestracja', passport.authenticate('local-register', {
+    app.post('/registration', passport.authenticate('local-register', {
         successRedirect: '/',
-        failureRedirect: '/rejestracja',
+        failureRedirect: '/registration',
         failureFlash: true
     }));
+
     app.post('/login', passport.authenticate('local-login', {
         successRedirect: '/',
         failureRedirect: '/login',
@@ -34,6 +35,9 @@ module.exports = function (app) {
         res.send(200);
 
     });
+
+
+
     app.get('/api/listOfUsers', auth, function (req, res) {
         User.find(function (err, data) {
             if (err)
@@ -43,7 +47,23 @@ module.exports = function (app) {
 
         });
     });
+    app.post('/api/UpdateUserData', function (req, res, done) {
+        User.findOne({
+            username: req.body.username
+        }, function (err, user) {
+            if (err)
+                return err;
+            if (user) {
+                user.name = req.body.name;
+                user.password = req.body.password;
+                user.surname = req.body.surname;
+                user.email = req.body.email;
+                user.save();
+            }
+            return done(null, user);
+        });
 
+    });
     app.post('/api/sendmail', function (req, res) {
 
         var smtpTransport = nodemailer.createTransport("SMTP", {

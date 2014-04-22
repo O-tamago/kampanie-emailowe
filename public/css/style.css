@@ -1,1 +1,329 @@
-body { padding-top:30px; }
+body {
+    background-image: url("../images/congruent_pentagon.jpg");
+    height: 100%;
+    background-size: cover;
+}
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#logo {
+    position: absolute;
+    top: -50%;
+    left: -5%;
+}
+#main-container {
+    border-radius: 15px;
+    width: 80%;
+    height: 720px;
+    margin: 4em auto;
+    background-color: white;
+    box-shadow: 10px 10px 5px #888888;
+}
+#walls {
+    position: absolute;
+    height: 63%;
+    width: 79.1%;
+    top: 36%;
+}
+#wall {
+    z-index: -1;
+    height: 430px;
+    width: 98.7%;
+    margin-left: 8px;
+}
+#header {
+    top: 20%;
+    position: absolute;
+    width: 79.1%;
+    height: 100px;
+    background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+    background-image: linear-gradient(top, #f4f1ee, #fff);
+    border-radius: 17%;
+    box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204, 198, 197, .5);
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear;
+}
+#social {
+    position: absolute;
+    top: 6%;
+    right: 12%;
+}
+/* MENU BUTTON */
+
+#menubt {
+    position: absolute;
+    top: 0%;
+    left: 45%;
+    z-index: +2;
+    background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+    background-image: linear-gradient(top, #f4f1ee, #fff);
+    border-radius: 50%;
+    box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204, 198, 197, .5);
+    height: 90px;
+    width: 90px;
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear;
+}
+#menubt:after {
+    color: green;
+    display: block;
+    font-size: 23px;
+    height: 30px;
+    text-decoration: none;
+    text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
+    position: absolute;
+    width: 30px;
+}
+#menubt:after {
+    left: 9px;
+    top: 27px;
+}
+/* MENU OPTIONS */
+
+#menu_options {
+    position: absolute;
+    left: 36%;
+    top: 180%
+}
+/* LOGIN BUTTON */
+
+#log {
+    position: absolute;
+    top: 0%;
+    left: 22%;
+    z-index: +2;
+    background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+    background-image: linear-gradient(top, #f4f1ee, #fff);
+    border-radius: 50%;
+    box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204, 198, 197, .5);
+    height: 70px;
+    width: 70px;
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear;
+}
+#log:after {
+    color: green;
+    content: "";
+    display: block;
+    font-size: 17px;
+    height: 30px;
+    text-decoration: none;
+    text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
+    position: absolute;
+    width: 30px;
+}
+#log:after {
+    left: 7px;
+    top: 25px;
+}
+/* CREATE ACC BUTTON */
+
+#acc {
+    position: absolute;
+    top: 0%;
+    right: 22%;
+    z-index: +2;
+    background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+    background-image: linear-gradient(top, #f4f1ee, #fff);
+    border-radius: 50%;
+    box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204, 198, 197, .5);
+    height: 70px;
+    width: 70px;
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear;
+}
+#acc:after {
+    color: green;
+    content: "";
+    display: block;
+    font-size: 11px;
+    height: 30px;
+    text-decoration: none;
+    text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
+    position: absolute;
+    width: 30px;
+}
+#acc:after {
+    left: 11px;
+    top: 20px;
+}
+/* LOGIN TEXTBOX */
+
+#login_box {
+    background: #333;
+    color: #ccc;
+    width: 200px;
+    padding: 6px 15px 6px 35px;
+    border-radius: 20px;
+    box-shadow: 0 1px 0 #ccc inset;
+    outline: 0;
+    /*
+position: absolute; 
+top: 53%;
+left: 40%;     
+*/
+}
+/* PASSWORD BOX */
+
+#pass_box {
+    background: #333;
+    color: #ccc;
+    width: 200px;
+    padding: 6px 15px 6px 35px;
+    border-radius: 20px;
+    box-shadow: 0 1px 0 #ccc inset;
+    outline: 0;
+    /*
+position:absolute;
+ top:60%;
+ left:40%;  
+*/
+}
+/* LOGIN BUTTON */
+
+#login {
+    position: absolute;
+    top: 67%;
+    left: 46%;
+    z-index: +2;
+    background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+    background-image: linear-gradient(top, #f4f1ee, #fff);
+    border-radius: 10%;
+    box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204, 198, 197, .5);
+    height: 35px;
+    width: 90px;
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear;
+}
+#login:after {
+    color: green;
+    content: "";
+    display: block;
+    font-size: 17px;
+    height: 30px;
+    text-decoration: none;
+    text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
+    position: absolute;
+    width: 30px;
+}
+#login:after {
+    content: "LOGIN";
+    left: 18px;
+    top: 8px;
+}
+/* CREATE LOGIN BOX */
+
+#login_box2 {
+    background: #333;
+    color: #ccc;
+    width: 200px;
+    padding: 6px 15px 6px 35px;
+    border-radius: 20px;
+    box-shadow: 0 1px 0 #ccc inset;
+    outline: 0;
+    position: absolute;
+    top: 53%;
+    left: 40%;
+}
+/* CREATE PASSWORD BOX */
+
+#pass_box2 {
+    background: #333;
+    color: #ccc;
+    width: 200px;
+    padding: 6px 15px 6px 35px;
+    border-radius: 20px;
+    box-shadow: 0 1px 0 #ccc inset;
+    outline: 0;
+    position: absolute;
+    top: 60%;
+    left: 40%;
+}
+/* CREATE E-MAIL BOX */
+
+#mail_box {
+    background: #333;
+    color: #ccc;
+    width: 200px;
+    padding: 6px 15px 6px 35px;
+    border-radius: 20px;
+    box-shadow: 0 1px 0 #ccc inset;
+    outline: 0;
+    position: absolute;
+    top: 67%;
+    left: 40%;
+}
+/* CREATE BUTTON */
+
+#create {
+    position: absolute;
+    top: 74%;
+    left: 46%;
+    z-index: +2;
+    background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+    background-image: linear-gradient(top, #f4f1ee, #fff);
+    border-radius: 10%;
+    box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204, 198, 197, .5);
+    height: 35px;
+    width: 90px;
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear;
+}
+#create:after {
+    color: green;
+    content: "";
+    display: block;
+    font-size: 10px;
+    height: 30px;
+    text-decoration: none;
+    text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
+    position: absolute;
+    width: 30px;
+}
+#create:after {
+    content: "CREATE ACCOUNT";
+    left: 19px;
+    top: 2px;
+}
+.loginFormDiv {
+    width: 200px;
+}
+/*  */
+
+.form-control {
+    color: black;
+    padding: 6px 15px 6px 35px;
+    border-radius: 20px;
+    box-shadow: 0 1px 0 #ccc inset;
+    outline: 0;
+}
+.main-container {
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 10px 10px 5px #888888;
+}
+/* make sidebar nav vertical */
+
+@media (min-width: 1080px) {
+    .sidebar-nav .navbar .navbar-collapse {
+        padding: 0;
+        max-height: none;
+    }
+    .sidebar-nav .navbar ul {
+        float: none;
+        display: block;
+    }
+    .sidebar-nav .navbar li {
+        float: none;
+        display: block;
+    }
+    .sidebar-nav .navbar li a {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+}

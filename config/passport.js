@@ -35,7 +35,7 @@ module.exports = function (app) {
             return done(null, user);
         });
     }));
-    passport.use('local-register', new LocalStrategy(function (username, password, done) {
+    passport.use('local-register', new LocalStrategy(function (username, password, done, req) {
         User.findOne({
             username: username
         }, function (err, user) {
@@ -51,14 +51,16 @@ module.exports = function (app) {
                 newUser.username = username;
                 newUser.password = password;
 
-
                 newUser.save(function (err) {
                     if (err)
                         throw err;
 
+
                     return done(null, user);
                 });
+
             }
         });
+
     }));
 };
