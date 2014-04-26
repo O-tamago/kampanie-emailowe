@@ -1,4 +1,20 @@
-angular.module('appRoutes', []).config(function ($routeProvider, $locationProvider, $httpProvider) {
+angular.module('appRoutes', ['ui.router']).config(function ($routeProvider, $locationProvider, $httpProvider, $stateProvider, $urlRouterProvider) {
+
+
+
+    $stateProvider
+
+    // HOME STATES AND NESTED VIEWS ========================================
+    .state('account-details', {
+        templateUrl: 'views/account-details.html',
+    })
+        .state('account-lists', {
+            templateUrl: 'views/account-lists.html',
+        })
+        .state('account-campaigns', {
+            templateUrl: 'views/account-campaigns.html',
+        })
+
     //================================================
     // Check if the user is connected
     //================================================

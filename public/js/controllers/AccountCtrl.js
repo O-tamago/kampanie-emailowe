@@ -1,14 +1,25 @@
-angular.module('AccountCtrl', []).controller('AccountController', function ($scope, $http, $location, $rootScope) {
+angular.module('AccountCtrl', []).controller('AccountController', function ($scope, $http, $location, $rootScope, $routeParams, $state) {
     $scope.tagline = "account page";
     $scope.edit = true;
     $rootScope.loggedIn = false;
     $scope.user = {};
+
+    $scope.us = {
+        lists: [
+            {
+                name: "nowa",
+                mails: [
+                    "wysockip14@gmail.com", "test@wp.pl"
+                ]
+            }
+
+        ]
+    };
     $http.get('/loggedin').success(function (data) {
         $scope.user = data;
         if (data !== '0')
             $rootScope.loggedIn = true;
     });
-
     $scope.sendMail = function () {
         $http.post("/api/sendmail").error(function (data) {
             $scope.res = "blad podczas wyslania";
@@ -38,5 +49,7 @@ angular.module('AccountCtrl', []).controller('AccountController', function ($sco
             return $scope.edit;
         }
     };
+
+
 
 });

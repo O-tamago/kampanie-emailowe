@@ -1,0 +1,27 @@
+<p>Account details</p>
+<button id="editEnable" ng-click="editEnable()">Edit</button>
+
+<form ng-submit="UpdateData()">
+    <div>
+        <label>Username</label>
+        <input type="text" ng-model="user.username" name="username" disabled />
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="text" ng-model="user.email" name="email" ng-disabled="edit" />
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="text" ng-model="user.password" name="password" ng-disabled="edit" />
+    </div>
+    <div>
+        <label>Name</label>
+        <input type="text" ng-model="user.name" name="name" ng-disabled="edit" />
+    </div>
+    <div>
+        <label>Surname</label>
+        <input type="text" ng-model="user.surname" name="surname" ng-disabled="edit" />
+    </div>
+
+    <input type="submit" value="Save" ng-disabled="edit">
+</form>
