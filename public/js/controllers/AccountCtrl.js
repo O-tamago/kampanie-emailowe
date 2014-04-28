@@ -4,21 +4,12 @@ angular.module('AccountCtrl', []).controller('AccountController', function ($sco
     $rootScope.loggedIn = false;
     $scope.user = {};
 
-    $scope.us = {
-        lists: [
-            {
-                name: "nowa",
-                mails: [
-                    "wysockip14@gmail.com", "test@wp.pl"
-                ]
-            }
 
-        ]
-    };
     $http.get('/loggedin').success(function (data) {
         $scope.user = data;
         if (data !== '0')
             $rootScope.loggedIn = true;
+
     });
     $scope.sendMail = function () {
         $http.post("/api/sendmail").error(function (data) {
@@ -37,12 +28,34 @@ angular.module('AccountCtrl', []).controller('AccountController', function ($sco
             surname: $scope.user.surname,
             email: $scope.user.email
 
+        }).success(function () {
+            $scope.editEnable();
         });
+
+    };
+    $scope.createList = function () {
+
+        $http.post('/api/createList', {
+            username: $scope.user.username,
+            name: $scope.user.lists.name,
+            mails: $scope.user.lists.mails
+        }).success(function () {
+
+            $http.get('/loggedin').success(function (data) {
+                $scope.user = data;
+                if (data !== '0')
+                    $rootScope.loggedIn = true;
+
+            });
+
+        });
+
 
     };
     $scope.editEnable = function () {
         if ($scope.edit == true) {
             $scope.edit = false;
+
             return $scope.edit;
         } else if ($scope.edit == false) {
             $scope.edit = true;

@@ -51,6 +51,7 @@ module.exports = function (app) {
                 newUser.username = username;
                 newUser.password = password;
 
+
                 newUser.save(function (err) {
                     if (err)
                         throw err;

@@ -52,17 +52,33 @@ module.exports = function (app) {
             username: req.body.username
         }, function (err, user) {
             if (err)
-                return err;
-            if (user) {
+                return done(err);
+            else if (user) {
                 user.name = req.body.name;
                 user.password = req.body.password;
                 user.surname = req.body.surname;
                 user.email = req.body.email;
                 user.save();
-            }
-            return done(null, user);
-        });
 
+                res.send(200);
+
+
+            }
+        });
+    });
+    app.post('/api/createList', function (req, res, done) {
+        User.findOne({
+            username: req.body.username
+        }, function (err, user) {
+            user.lists.push({
+                name: req.body.name,
+                mails: req.body.mails
+            });
+            user.save();
+
+            res.send(200);
+
+        });
     });
     app.post('/api/sendmail', function (req, res) {
 

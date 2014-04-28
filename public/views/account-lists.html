@@ -1,7 +1,22 @@
-<a href="" class="btn btn-link">Create list</a>
+<h3>Your mailing lists:</h3>
 <ul>
-    <li ng-repeat="list in us.lists">
-        {{list.name}}: Emails {{list.mails}}
+    <li ng-repeat="list in user.lists">
+        <b>Name:</b>
+        {{list.name}}:
+        <b>Emails</b>
+        {{list.mails}}
 
     </li>
 </ul>
+<span ng-show="user.lists.length == 0">You dont have any available lists...</span>
+<form ng-submit="createList()">
+    <br/>
+    <label for="listName ">List name</label>
+    <input type="text " name="listName " ng-model="user.lists.name" required/>
+    <br/>
+    <br/>
+    <label for="emails ">Emails</label>
+    <textarea name="emails" ng-model="user.lists.mails" placeholder="Emails seperated by ," required></textarea>
+    <input type="submit" value="Create list" class="btn btn-link" />
+
+</form>

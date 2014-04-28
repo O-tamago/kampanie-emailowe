@@ -54,19 +54,20 @@
                                 <a href="/account">Account</a>
                             </li>
                             <li id="MenuPanel" class="link">
-                                <a href="#" id="MainMenu" ng-show="loggedIn">Menu</a>
-                                <ul id="MainMenuOptions">
-                                    <li>
-                                        <a ui-sref=".account-details">Details</a>
-                                    </li>
-                                    <li>
-                                        <a ui-sref=".account-lists">Mailing lists</a>
-                                    </li>
-                                    <li>
-                                        <a ui-sref=".account-campaigns">E- mail campaigns</a>
-                                    </li>
+                                <div ng-show="loggedIn">
+                                    <ul id="MainMenuOptions">
+                                        <li>
+                                            <a ui-sref="account-details">Details</a>
+                                        </li>
+                                        <li>
+                                            <a ui-sref=".account-lists">Mailing lists</a>
+                                        </li>
+                                        <li>
+                                            <a ui-sref=".account-campaigns">E- mail campaigns</a>
+                                        </li>
 
-                                </ul>
+                                    </ul>
+                                </div>
                             </li>
                             <li class="link">
                                 <a href="/registration">Registration</a>

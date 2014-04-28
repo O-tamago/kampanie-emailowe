@@ -6,13 +6,11 @@ var User = mongoose.model('User', {
     username: String,
     password: String,
     email: String,
-    lists: [
-        {
-            name: String,
-            mails: []
-        }
-
-    ]
+    lists: [{
+        name: String,
+        mails: String
+    }],
+    campaigns: []
 
 
 });

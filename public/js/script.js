@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $("#MainMenuOptions").hide();
+
 
     $("#MainMenu").click(function () {
         $("#MainMenuOptions").show(500);

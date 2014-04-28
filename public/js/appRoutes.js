@@ -7,13 +7,14 @@ angular.module('appRoutes', ['ui.router']).config(function ($routeProvider, $loc
     // HOME STATES AND NESTED VIEWS ========================================
     .state('account-details', {
         templateUrl: 'views/account-details.html',
+
     })
         .state('account-lists', {
             templateUrl: 'views/account-lists.html',
         })
         .state('account-campaigns', {
             templateUrl: 'views/account-campaigns.html',
-        })
+        });
 
     //================================================
     // Check if the user is connected
@@ -73,7 +74,6 @@ angular.module('appRoutes', ['ui.router']).config(function ($routeProvider, $loc
             resolve: {
                 loggedin: checkLoggedin
             }
-
         }).when('/login', {
             templateUrl: 'views/login.html',
             controller: 'LoginController'
