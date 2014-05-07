@@ -1,10 +1,9 @@
 angular.module('AccountCtrl', []).controller('AccountController', function ($scope, $http, $location, $rootScope, $routeParams, $state) {
-    $scope.tagline = "account page";
+
     $scope.edit = true;
     $rootScope.loggedIn = false;
     $scope.user = {};
-
-
+    $state.transitionTo('account.details');
     $http.get('/loggedin').success(function (data) {
         $scope.user = data;
         if (data !== '0')
@@ -23,10 +22,10 @@ angular.module('AccountCtrl', []).controller('AccountController', function ($sco
 
         $http.post('/api/UpdateUserData', {
             username: $scope.user.username,
-            password: $scope.user.password,
             name: $scope.user.name,
             surname: $scope.user.surname,
-            email: $scope.user.email
+            email: $scope.user.email,
+            emailPassword: $scope.user.emailPassword
 
         }).success(function () {
             $scope.editEnable();
@@ -40,22 +39,24 @@ angular.module('AccountCtrl', []).controller('AccountController', function ($sco
             name: $scope.user.lists.name,
             mails: $scope.user.lists.mails
         }).success(function () {
-
             $http.get('/loggedin').success(function (data) {
                 $scope.user = data;
-                if (data !== '0')
-                    $rootScope.loggedIn = true;
 
             });
-
         });
+    };
+    $scope.DeleteList = function (idx) {
+        var listToDelete = $scope.user.lists[idx];
+        $scope.user.lists.splice(listToDelete.id, 1);
 
-
+        $scope.newlist = $scope.user.lists;
+        $http.post('/api/deleteList', {
+            newlist: $scope.newlist
+        });
     };
     $scope.editEnable = function () {
         if ($scope.edit == true) {
             $scope.edit = false;
-
             return $scope.edit;
         } else if ($scope.edit == false) {
             $scope.edit = true;

@@ -55,9 +55,9 @@ module.exports = function (app) {
                 return done(err);
             else if (user) {
                 user.name = req.body.name;
-                user.password = req.body.password;
                 user.surname = req.body.surname;
                 user.email = req.body.email;
+                user.emailPassword = req.body.emailPassword;
                 user.save();
 
                 res.send(200);
@@ -76,6 +76,18 @@ module.exports = function (app) {
             });
             user.save();
 
+            res.send(200);
+
+        });
+    });
+    app.post('/api/deleteList', function (req, res, done) {
+        User.findOne({
+            username: req.body.username
+        }, function (err, user) {
+            console.log("delete list api");
+            console.log(req.body.newlist);
+            user.lists = req.body.newlist;
+            user.save();
             res.send(200);
 
         });

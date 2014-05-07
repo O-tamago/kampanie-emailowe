@@ -1,27 +1,44 @@
 <p>Account details</p>
-<button id="editEnable" ng-click="editEnable()">Edit</button>
-
+<button id="editEnable" ng-click="editEnable()" class="btn btn-info">Edit</button>
+<br/>
+<br/>
+<script>
+    $("#emailPassword").focus(function () {
+        $("#emailPassword").prop("type", "text");
+    });
+     $("#emailPassword").focusout(function () {
+        $("#emailPassword").prop("type", "password");
+    });
+</script>
 <form ng-submit="UpdateData()">
     <div>
         <label>Username</label>
-        <input type="text" ng-model="user.username" name="username" disabled />
+        <input type="text" ng-model="user.username" name="username" class="form-control" disabled />
     </div>
     <div>
         <label>Email</label>
-        <input type="text" ng-model="user.email" name="email" ng-disabled="edit" />
+        <input type="text" ng-model="user.email" name="email" class="form-control" ng-disabled="edit" />
     </div>
+    <!--
     <div>
-        <label>Password</label>
-        <input type="text" ng-model="user.password" name="password" ng-disabled="edit" />
+    <label>Password</label>
+    <input type="text" ng-model="user.password" name="password" class="form-control" ng-disabled="edit" />
+</div>
+-->
+    <div>
+        <label>Email password</label>
+        <input type="password" ng-model="user.emailPassword" name="emailPassword" id="emailPassword" class="form-control" ng-disabled="edit" />
     </div>
     <div>
         <label>Name</label>
-        <input type="text" ng-model="user.name" name="name" ng-disabled="edit" />
+        <input type="text" ng-model="user.name" name="name" class="form-control" ng-disabled="edit" />
     </div>
     <div>
         <label>Surname</label>
-        <input type="text" ng-model="user.surname" name="surname" ng-disabled="edit" />
+        <input type="text" ng-model="user.surname" name="surname" class="form-control" ng-disabled="edit" />
     </div>
-
-    <input type="submit" value="Save" ng-disabled="edit">
+    <br/>
+    <input type="submit" value="Save" class="btn btn-success" ng-disabled="edit">
 </form>
+
+

@@ -1,21 +1,6 @@
 angular.module('appRoutes', ['ui.router']).config(function ($routeProvider, $locationProvider, $httpProvider, $stateProvider, $urlRouterProvider) {
 
 
-
-    $stateProvider
-
-    // HOME STATES AND NESTED VIEWS ========================================
-    .state('account-details', {
-        templateUrl: 'views/account-details.html',
-
-    })
-        .state('account-lists', {
-            templateUrl: 'views/account-lists.html',
-        })
-        .state('account-campaigns', {
-            templateUrl: 'views/account-campaigns.html',
-        });
-
     //================================================
     // Check if the user is connected
     //================================================
@@ -61,29 +46,62 @@ angular.module('appRoutes', ['ui.router']).config(function ($routeProvider, $loc
     //================================================
     // ROUTES
     //================================================
-    $routeProvider
-
-    // home page
-    .when('/', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginController'
-    })
-        .when('/account', {
+    $urlRouterProvider.otherwise('/account');
+    $stateProvider
+        .state('login', {
+            url: '/login',
+            templateUrl: 'views/login.html',
+            controller: 'LoginController'
+        })
+        .state('registration', {
+            url: '/registration',
+            templateUrl: 'views/registration.html',
+            controller: 'RegisterController'
+        })
+        .state('account', {
+            url: '/account',
             templateUrl: 'views/account.html',
             controller: 'AccountController',
             resolve: {
-                loggedin: checkLoggedin
+                loggedin: checkLoggedin,
             }
-        }).when('/login', {
-            templateUrl: 'views/login.html',
-            controller: 'LoginController'
-        }).when('/registration', {
-            templateUrl: 'views/registration.html',
-            controller: 'RegisterController'
-        }).otherwise({
-            redirectTo: '/'
-        });
+        })
+        .state('account.details', {
+            templateUrl: 'views/account-details.html'
+        })
+        .state('account.lists', {
+            templateUrl: 'views/account-lists.html'
+        })
+        .state('account.campaigns', {
+            templateUrl: 'views/account-campaigns.html'
+        })
+        .state('account.statistics', {
+            templateUrl: 'views/account-statistics.html'
+        })
 
+    //        })
+    //    $routeProvider
+    //
+    //    // home page
+    //    .when('/', {
+    //        templateUrl: 'views/login.html',
+    //        controller: 'LoginController'
+    //    })
+    //        .when('/account', {
+    //            templateUrl: 'views/account.html',
+    //            controller: 'AccountController',
+    //            resolve: {
+    //                loggedin: checkLoggedin
+    //            }
+    //        }).when('/login', {
+    //            templateUrl: 'views/login.html',
+    //            controller: 'LoginController'
+    //        }).when('/registration', {
+    //            templateUrl: 'views/registration.html',
+    //            controller: 'RegisterController'
+    //        }).otherwise({
+    //            redirectTo: '/'
+    //        });
     $locationProvider.html5Mode(true);
 
 }).run(function ($rootScope, $http, $location) {
@@ -93,7 +111,7 @@ angular.module('appRoutes', ['ui.router']).config(function ($routeProvider, $loc
     $rootScope.logout = function () {
         $rootScope.message = 'Logged out.';
         $http.post('/logout').success(function () {
-            $location.url('/');
+            $location.url('/login');
             $rootScope.loggedIn = false;
 
         });

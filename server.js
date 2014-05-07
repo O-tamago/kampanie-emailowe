@@ -11,7 +11,6 @@ var LocalStrategy = require('passport-local').Strategy;
 
 // configuration ===========================================
 
-// config files
 var db = require('./config/db');
 
 

@@ -6,9 +6,10 @@ var User = mongoose.model('User', {
     username: String,
     password: String,
     email: String,
+    emailPassword: String,
     lists: [{
         name: String,
-        mails: String
+        mails: []
     }],
     campaigns: []
 

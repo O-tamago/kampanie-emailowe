@@ -2,6 +2,7 @@ module.exports = function (app) {
 
     var passport = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
+    var SHA256 = require("crypto-js/sha256");
 
     var User = require('../app/models/User');
     passport.serializeUser(function (user, done) {
@@ -26,12 +27,11 @@ module.exports = function (app) {
                     message: 'incorrect username.'
                 });
             }
-            if (user.password != password) {
+            if (user.password != SHA256(password)) {
                 return done(null, false, {
                     message: 'incorrect password.'
                 });
             }
-
             return done(null, user);
         });
     }));
@@ -49,13 +49,14 @@ module.exports = function (app) {
             } else {
                 var newUser = new User();
                 newUser.username = username;
-                newUser.password = password;
+                newUser.password = SHA256(password);
 
 
                 newUser.save(function (err) {
-                    if (err)
+                    if (err) {
                         throw err;
-
+                        console.log("istnieje juz");
+                    }
 
                     return done(null, user);
                 });
