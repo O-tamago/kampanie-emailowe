@@ -1,0 +1,29 @@
+<div>
+    <h3>Your list of emails:</h3>
+    <div>
+        <a ui-sref="account.createEmail">
+            Create new
+            <span class="glyphicon glyphicon-plus-sign"></span>
+        </a>
+    </div>
+    <br/>
+    <div>
+        <label>Search</label>
+        <input type="text" ng-model="searchMail">
+    </div>
+    <br/>
+
+    <div class="col-md-2" id="emailIcon" ng-repeat="email in user.emailLayouts | filter:searchMail">
+        <a ui-sref="account.editEmail" ng-click="SelectEmailToEdit($index)">
+            <strong>{{email.name}}</strong>
+        </a>
+        <span style="float:right;">
+            <a href="#DeleteEmail" ng-click="DeleteEmail($index)" class="glyphicon glyphicon-remove"></a>
+        </span>
+    </div>
+
+    <span ng-show="user.emailLayouts == 0">You havent created any mail yet...</span>
+    <br/>
+
+
+</div>
