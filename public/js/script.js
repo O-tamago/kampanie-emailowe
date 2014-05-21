@@ -13,4 +13,12 @@ $(document).ready(function () {
     });
     $("#MenuPanel").css("border", "1px solid black");
     $(".link").css("border", "1px solid black");
+
+
+    $(".tipRight").tooltip({
+        placement: "right"
+    });
+    $(".tipTop").tooltip({
+        placement: "top"
+    });
 });

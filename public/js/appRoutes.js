@@ -72,36 +72,28 @@ angular.module('appRoutes', ['ui.router']).config(function ($routeProvider, $loc
         .state('account.lists', {
             templateUrl: 'views/account-lists.html'
         })
+        .state('account.listDetails', {
+            templateUrl: 'views/list-details.html'
+        })
         .state('account.campaigns', {
             templateUrl: 'views/account-campaigns.html'
+        })
+        .state('account.createCampaign', {
+            templateUrl: 'views/campaign-create.html'
         })
         .state('account.statistics', {
             templateUrl: 'views/account-statistics.html'
         })
+        .state('account.emails', {
+            templateUrl: 'views/account-emails.html'
+        })
+        .state('account.createEmail', {
+            templateUrl: 'views/email-create.html'
+        })
+        .state('account.editEmail', {
+            templateUrl: 'views/email-edit.html'
+        })
 
-    //        })
-    //    $routeProvider
-    //
-    //    // home page
-    //    .when('/', {
-    //        templateUrl: 'views/login.html',
-    //        controller: 'LoginController'
-    //    })
-    //        .when('/account', {
-    //            templateUrl: 'views/account.html',
-    //            controller: 'AccountController',
-    //            resolve: {
-    //                loggedin: checkLoggedin
-    //            }
-    //        }).when('/login', {
-    //            templateUrl: 'views/login.html',
-    //            controller: 'LoginController'
-    //        }).when('/registration', {
-    //            templateUrl: 'views/registration.html',
-    //            controller: 'RegisterController'
-    //        }).otherwise({
-    //            redirectTo: '/'
-    //        });
     $locationProvider.html5Mode(true);
 
 }).run(function ($rootScope, $http, $location) {

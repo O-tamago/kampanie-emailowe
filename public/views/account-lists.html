@@ -1,19 +1,19 @@
-<h3>Your mailing lists:</h3>
-<ul id="UserLists">
-    <li ng-repeat="list in user.lists">
-        {{list.name}}
-        <button ng-href='#' ng-click="DeleteList($index)">Delete</button>
-    </li>
-</ul>
-<span ng-show=" user.lists.length==0 ">You dont have any available lists...</span>
-<form ng-submit="createList() ">
-    <br/>
-    <label for="listName ">List name</label>
-    <input type="text " name="listName " class="form-control " ng-model="user.lists.name " required/>
-    <br/>
-    <br/>
-    <label for="emails ">Emails</label>
-    <textarea name="emails " ng-model="user.lists.mails " class="form-control " rows="10 " ng-list="/\n/ " required></textarea>
-    <button class="btn btn-success ">Add</button>
-</form>
+<div>
+    <h3>Your mailing lists:</h3>
 
+    <ul id="UserLists">
+        <li ng-repeat="list in user.lists">
+            <a ui-sref="account.listDetails" ng-click="ListDetails($index)">{{list.name}}</a>
+            <a href="#DeleteList" ng-click="DeleteList($index,list._id)">Delete</a>
+        </li>
+    </ul>
+    <span ng-show=" user.lists.length==0 ">You dont have any available lists...</span>
+    <form ng-submit="createList() ">
+        <br/>
+        <label for="listName ">List name</label>
+        <input type="text " name="listName " class="form-control " ng-model="user.lists.name " required/>
+        <button class="btn btn-link ">Create new list</button>
+
+    </form>
+
+</div>

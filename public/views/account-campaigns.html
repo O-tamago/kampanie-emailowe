@@ -1,4 +1,9 @@
-campaigns
-
-
-
+<div>
+    <p>Your campaigns:</p>
+    <ul>
+        <li ng-repeat="campaign in user.campaigns"></li>
+    </ul>
+    <span ng-show="user.campaigns ==0">You dont have any campaigns...</span>
+    <br/>
+    <a ui-sref="account.createCampaign">Create new</a>
+</div>
