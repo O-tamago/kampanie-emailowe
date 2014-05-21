@@ -5,30 +5,12 @@ module.exports = function (grunt) {
         uglify: {
             my_target: {
                 files: {
-                    'public/js/dest/app.min.js': ['public/js/dest/built.js'],
-
-                },
-                options: {
-                    mangle: false
+                    'public/js/dest/app.min.js': ['public/js/app.js'],
+                    'public/js/dest/appRoutes.min.js': ['public/js/appRoutes.js'],
+                    'public/js/dest/AccountCtrl.min.js': ['public/js/controllers/AccountCtrl.js'],
+                    'public/js/dest/LoginCtrl.min.js': ['public/js/controllers/LoginCtrl.js'],
+                    'public/js/dest/RegisterCtrl.min.js': ['public/js/controllers/RegisterCtrl.js']
                 }
-            }
-        },
-
-        watch: {
-            scripts: {
-                files: ['public/js/controllers/AccountCtrl.js', 'public/js/controllers/LoginCtrl.js', 'public/js/controllers/RegisterCtrl.js',
-                    'public/js/appRoutes.js', 'public/js/app.js'],
-                tasks: ['concat', 'uglify'],
-
-            },
-        },
-        concurrent: {
-            target: {
-                tasks: ['watch', 'nodemon'],
-                options: {
-                    logConcurrentOutput: true
-                },
-
             }
         },
         nodemon: {
@@ -37,29 +19,25 @@ module.exports = function (grunt) {
                 env: {
                     PORT: 8080
                 },
-
             }
         },
-        concat: {
-            options: {
-                separator: ';',
-            },
-            dist: {
-                src: ['public/js/controllers/AccountCtrl.js', 'public/js/controllers/LoginCtrl.js', 'public/js/controllers/RegisterCtrl.js',
-                    'public/js/appRoutes.js', 'public/js/app.js'],
-                dest: 'public/js/dest/built.js',
+        watch: {
+            scripts: {
+                files: ['**/*.js'],
+                tasks: ['nodemon'],
+                options: {
+                    spawn: false,
+                },
             },
         },
-
     });
-    // Load the plugins   
+    // Load the plugin that provides the "uglify" task.    
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-nodemon');
-    grunt.loadNpmTasks('grunt-concurrent');
-    grunt.loadNpmTasks('grunt-contrib-concat');
+
     // Default task(s).
-    grunt.registerTask('default', ['concurrent:target']);
+    grunt.registerTask('default', ['uglify', 'watch', 'nodemon']);
 
 };

@@ -1,8 +1,5 @@
 {
     "name": "kampanie-emailowe",
-    "scripts": {
-        "start": "node server.js"
-    },
     "main": "server.js",
     "dependencies": {
         "express": "~3.4.8",
@@ -17,9 +14,6 @@
         "grunt-contrib-nodeunit": "~0.2.0",
         "grunt-contrib-uglify": "~0.2.2",
         "grunt-contrib-watch": "*",
-        "grunt-nodemon": "*",
-        "grunt-concurrent": "*",
-        "grunt-contrib-concat": "*",
-
+        "grunt-nodemon": "*"
     }
 }

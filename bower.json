@@ -6,7 +6,6 @@
         "angular": "latest",
         "angular-route": "latest",
         "jquery": "latest",
-        "angular-ui-router": "0.2.9",
-        "Chart.js": "latest"
+        "angular-ui-router": "0.2.9"
     }
 }

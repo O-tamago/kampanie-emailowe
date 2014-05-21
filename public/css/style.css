@@ -1,5 +1,7 @@
 body {
     background-image: url("../images/congruent_pentagon.jpg");
+    height: 100%;
+    background-size: cover;
 }
 * {
     -webkit-touch-callout: none;
@@ -16,19 +18,14 @@ body {
 
 .form-control {
     color: black;
-    border-radius: 0px;
 }
 .main-container {
     background-color: lightgrey;
     box-shadow: 10px 10px 5px #888888;
-    overflow: hidden;
 }
 /* make sidebar nav vertical */
 
 @media (min-width: 1080px) {
-    .sidebar-nav {
-        width: 235px;
-    }
     .sidebar-nav .navbar .navbar-collapse {
         padding: 0;
         max-height: none;
@@ -46,34 +43,6 @@ body {
         padding-bottom: 12px;
     }
 }
-#newContactForm {
-    border: 0px solid black;
-}
-#newContactForm input[type=text] {
-    float: left;
-    width: 150px;
-    margin-right: 10px;
-}
-#newContactForm input[type=submit] {
-    float: left;
-}
-#newContactForm label {
-    float: left;
-    padding: 5px;
-}
-#searchContactDiv {
-    border: 0px solid black;
-}
-#searchContactDiv label {
-    float: left;
-    padding: 5px;
-}
-#searchContactDiv #searchTextBox {
-    float: left;
-    width: 150px;
-}
-#emailIcon {
-    border: 1px solid black;
-    overflow: hidden;
-    padding: 2px;
+#UserLists {
+    list-style: none;
 }

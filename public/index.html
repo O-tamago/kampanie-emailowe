@@ -18,16 +18,18 @@
     <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
 
-    <script src="libs/ckeditor/ckeditor.js"></script>
-    <!-- JS CUSTOM-->
-    <script src="js/script.js"></script>
 
-    <!-- ANGULAR -->
-    <script src="js/dest/app.min.js"></script>
+    <!-- ANGULAR CUSTOM -->
 
+    <script src="js/controllers/AccountCtrl.js"></script>
+    <script src="js/controllers/LoginCtrl.js"></script>
+    <script src="js/controllers/RegisterCtrl.js"></script>
+
+    <script src="js/appRoutes.js"></script>
+    <script src="js/app.js"></script>
 </head>
 
-<body ng-app="project" id="project" ng-controller="AccountController">
+<body ng-app="project" ng-controller="AccountController">
 
 
 
@@ -49,38 +51,33 @@
                     <div class="navbar-collapse collapse sidebar-navbar-collapse">
                         <ul class="nav navbar-nav">
                             <li>
-                                <button ui-sref="account" class="btn btn-link" ng-disabled="loggedIn">Konto</button>
+                                <a ui-sref="account">Konto</a>
                             </li>
                             <li>
                                 <div ng-show="loggedIn">
                                     <ul id="MainMenuOptions">
                                         <li>
-                                            <a ui-sref="account.details" class="tipRight" title="Mange your data">Dane</a>
+                                            <a ui-sref="account.details">Dane</a>
                                         </li>
                                         <li>
-                                            <a ui-sref="account.lists" class="tipRight" title="Mange your lists">Listy</a>
+                                            <a ui-sref="account.lists">Listy mailingowe</a>
                                         </li>
                                         <li>
-                                            <a ui-sref="account.campaigns" class="tipRight" title="Mange your campaigns">Kampanie</a>
+                                            <a ui-sref="account.campaigns">Kampanie</a>
                                         </li>
                                         <li>
-                                            <a ui-sref="account.statistics" class="tipRight" title="See your statistics">Statystyki</a>
-                                        </li>
-                                        <li>
-                                            <a ui-sref="account.emails" class="tipRight" title="Mange your email layouts">Emails</a>
+                                            <a ui-sref="account.statistics">Statystyki</a>
                                         </li>
                                     </ul>
                                 </div>
-
                             </li>
                             <li>
-                                <button ui-sref="registration" class="btn btn-link" ng-hide="loggedIn">Rejestracja</button>
+                                <a ui-sref="registration" ng-hide="loggedIn">Rejestracja</a>
                             </li>
                             <li>
-                                <a href="#Logout" ng-click="logout() " ng-show="loggedIn ">Wyloguj</a>
+                                <a href="# " ng-click="logout() " ng-show="loggedIn ">Wyloguj</a>
                             </li>
                         </ul>
-
                     </div>
                     <!--/.nav-collapse -->
                 </div>
@@ -88,14 +85,14 @@
         </div>
         <!-- ANGULAR DYNAMIC CONTENT -->
 
-        <div ui-view class="col-md-10" id="dynamicContent">
+        <div ui-view class="col-md-10 ">
         </div>
     </div>
 
 
 
-
-
+    <!-- JS CUSTOM-->
+<script src="js/script.js "></script>
 </body>
 
 </html>
