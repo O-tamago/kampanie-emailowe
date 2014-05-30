@@ -17,7 +17,7 @@ module.exports = function (app) {
     });
     passport.use('local-login', new LocalStrategy(function (username, password, done) {
         User.findOne({
-            username: username
+            username: username.toUpperCase()
         }, function (err, user) {
             if (err) {
                 return done(err);
@@ -37,7 +37,7 @@ module.exports = function (app) {
     }));
     passport.use('local-register', new LocalStrategy(function (username, password, done, req) {
         User.findOne({
-            username: username
+            username: username.toUpperCase()
         }, function (err, user) {
             if (err) {
                 return done(err);
@@ -48,7 +48,7 @@ module.exports = function (app) {
                 });
             } else {
                 var newUser = new User();
-                newUser.username = username;
+                newUser.username = username.toUpperCase();
                 newUser.password = SHA256(password);
 
 

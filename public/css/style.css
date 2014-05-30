@@ -1,7 +1,5 @@
 body {
-    background-image: url("../images/congruent_pentagon.jpg");
-    height: 100%;
-    background-size: cover;
+    background: white;
 }
 * {
     -webkit-touch-callout: none;
@@ -11,38 +9,148 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
-.loginFormDiv {
+<!-- --> #wrapper {
+    padding-left: 250px;
+    transition: all 0.4s ease 0s;
+}
+#sidebar-wrapper {
+    margin-left: -250px;
+    left: 250px;
     width: 250px;
+    background: #000;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: all 0.4s ease 0s;
 }
-/*  */
-
-.form-control {
-    color: black;
+#page-content-wrapper {
+    width: 100%;
 }
-.main-container {
-    background-color: lightgrey;
-    box-shadow: 10px 10px 5px #888888;
-}
-/* make sidebar nav vertical */
-
-@media (min-width: 1080px) {
-    .sidebar-nav .navbar .navbar-collapse {
-        padding: 0;
-        max-height: none;
-    }
-    .sidebar-nav .navbar ul {
-        float: none;
-        display: block;
-    }
-    .sidebar-nav .navbar li {
-        float: none;
-        display: block;
-    }
-    .sidebar-nav .navbar li a {
-        padding-top: 12px;
-        padding-bottom: 12px;
-    }
-}
-#UserLists {
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
     list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.sidebar-nav li {
+    line-height: 40px;
+    text-indent: 20px;
+}
+.sidebar-nav li a {
+    color: #999999;
+    display: block;
+    text-decoration: none;
+}
+.sidebar-nav li a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+}
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    line-height: 60px;
+    font-size: 18px;
+}
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+.content-header {
+    height: 25px;
+    line-height: 65px;
+}
+.content-header h1 {
+    margin: 0;
+    margin-left: 20px;
+    line-height: 65px;
+    display: inline-block;
+}
+#menu-toggle {
+    display: none;
+}
+.inset {
+    padding: 20px;
+}
+@media (max-width: 767px) {
+    #wrapper {
+        padding-left: 0;
+    }
+    #sidebar-wrapper {
+        left: 0;
+    }
+    #wrapper.active {
+        position: relative;
+        left: 0px;
+    }
+    #wrapper.active #sidebar-wrapper {
+        left: 250px;
+        width: 250px;
+        transition: all 0.4s ease 0s;
+    }
+    #menu-toggle {
+        display: inline-block;
+    }
+    .inset {
+        padding: 15px;
+    }
+}
+#menu-toggle-close {
+    display: none;
+}
+@media (max-width: 760px) {
+    #menu-toggle-close {
+        display: block;
+    }
+}
+<!-- FORMS--> #newContactForm {
+    border: 0px solid black;
+}
+#newContactForm input[type=text] {
+    float: left;
+    width: 150px;
+    margin-right: 10px;
+}
+#newContactForm input[type=submit] {
+    float: left;
+}
+#newContactForm label {
+    float: left;
+    padding: 5px;
+}
+#searchContactDiv {
+    border: 0px solid black;
+}
+#searchContactDiv label {
+    float: left;
+    padding: 5px;
+}
+#searchContactDiv #searchTextBox {
+    float: left;
+    width: 150px;
+}
+#emailIcon {
+    border: 1px solid black;
+    overflow: hidden;
+    padding: 2px;
+}
+.columnWidth input {
+    width: 200px;
+}
+@media (min-width: 60px) {
+    .newContactInput {
+        float: left;
+    }
+}
+.table tr:nth-child(even) {
+    background: lightgrey;
 }

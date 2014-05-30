@@ -14,85 +14,95 @@
     <!-- JS -->
     <script src="libs/jquery/dist/jquery.min.js"></script>
     <script src="libs/angular/angular.min.js"></script>
+    <script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="libs/angular-route/angular-route.min.js"></script>
     <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
 
 
-    <!-- ANGULAR CUSTOM -->
+    <script src="libs/ckeditor/ckeditor.js"></script>
+    <!-- JS CUSTOM-->
+    <script src="js/script.js"></script>
 
-    <script src="js/controllers/AccountCtrl.js"></script>
-    <script src="js/controllers/LoginCtrl.js"></script>
-    <script src="js/controllers/RegisterCtrl.js"></script>
+    <!-- ANGULAR -->
+    <script src="js/dest/app.min.js"></script>
 
-    <script src="js/appRoutes.js"></script>
-    <script src="js/app.js"></script>
 </head>
 
-<body ng-app="project" ng-controller="AccountController">
+<body ng-app="project" id="project" ng-controller="AccountController">
+    <div id="wrapper">
+
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
 
 
+                <!-- Miejsce na logo przyklad-->
+                <div style="text-align:center">
+                    <img src="https://g.twimg.com/business/page/image/11TwitterForSmallBusiness-300_1.png" width="125" />
+                </div>
+                <li>
+                    <a href="#" id="menu-toggle-close"><span class="glyphicon glyphicon-expand"></span>&nbsp;Close menu</a>
 
-    <div class="row">
+                </li>
+                <li>
+                    <a ui-sref="account" ng-hide="loggedIn"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Account</a>
+                </li>
 
-        <div class="col-md-2">
-            <div class="sidebar-nav">
-                <div class="navbar navbar-inverse" role="navigation">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <span class="visible-xs navbar-brand">
-                        </span>
+                <div ng-show="loggedIn">
+                    <li>
+                        <a ui-sref="account.details" class="tipRight" title="Mange your data"><span class="glyphicon glyphicon-hdd"></span>&nbsp;Details</a>
+                    </li>
+                    <li>
+                        <a ui-sref="account.lists" class="tipRight" title="Mange your lists"><span class="glyphicon glyphicon-list-alt"></span>&nbsp;Lists</a>
+                    </li>
+                    <li>
+                        <a ui-sref="account.campaigns" class="tipRight" title="Mange your campaigns"><span class="glyphicon glyphicon-calendar"></span>&nbsp;Campaigns</a>
+                    </li>
+                    <li>
+                        <a ui-sref="account.statistics" class="tipRight" title="See your statistics"><span class="glyphicon glyphicon-stats"></span>&nbsp;Statistics</a>
+                    </li>
+                    <li>
+                        <a ui-sref="account.emails" class="tipRight" title="Mange your email layouts"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Emails</a>
+                    </li>
+
+                </div>
+
+                <li>
+                    <a ui-sref="registration" ng-hide="loggedIn"><span class="glyphicon glyphicon-user"></span>&nbsp;Registration</a>
+                </li>
+                <li>
+                    <a href="#" ng-click="logout() " ng-show="loggedIn "><span class="glyphicon glyphicon-off"></span>&nbsp;Logout</a>
+                </li>
+            </ul>
+        </div>
+        <div id="page-content-wrapper">
+            <div class="content-header">
+                <h1>
+                    <a id="menu-toggle" href="#" class="btn btn-default">
+                        <span class="glyphicon glyphicon-align-justify"></span>
+
+                    </a>
+                </h1>
+            </div>
+            <!-- Keep all page content within the page-content inset div! -->
+            <div class="page-content inset">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- ANGULAR DYNAMIC CONTENT -->
+                        <div ui-view class="col-md-10" id="dynamicContent">
+                        </div>
                     </div>
-                    <div class="navbar-collapse collapse sidebar-navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a ui-sref="account">Konto</a>
-                            </li>
-                            <li>
-                                <div ng-show="loggedIn">
-                                    <ul id="MainMenuOptions">
-                                        <li>
-                                            <a ui-sref="account.details">Dane</a>
-                                        </li>
-                                        <li>
-                                            <a ui-sref="account.lists">Listy mailingowe</a>
-                                        </li>
-                                        <li>
-                                            <a ui-sref="account.campaigns">Kampanie</a>
-                                        </li>
-                                        <li>
-                                            <a ui-sref="account.statistics">Statystyki</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a ui-sref="registration" ng-hide="loggedIn">Rejestracja</a>
-                            </li>
-                            <li>
-                                <a href="# " ng-click="logout() " ng-show="loggedIn ">Wyloguj</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--/.nav-collapse -->
                 </div>
             </div>
-        </div>
-        <!-- ANGULAR DYNAMIC CONTENT -->
 
-        <div ui-view class="col-md-10 ">
         </div>
+
+
     </div>
 
 
 
-    <!-- JS CUSTOM-->
-<script src="js/script.js "></script>
+
+
 </body>
 
 </html>

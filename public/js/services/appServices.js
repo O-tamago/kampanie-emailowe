@@ -43,10 +43,13 @@ angular.module('appServices', []).factory('AccountService', ['$http', '$location
                     contactLastName: contactLastName,
                     contactEmail: contactEmail
                 }).success(function () {
-                    $http.get('/loggedin').success(function (data) {
-                        $scope.user = data;
-                        $scope.chosenList = $scope.user.lists[$rootScope.ListIndex];
-                    });
+                    setTimeout(function () {
+                        $http.get('/loggedin').success(function (data) {
+                            $scope.user = data;
+                            $scope.chosenList = $scope.user.lists[$rootScope.ListIndex];
+                        });
+
+                    }, 100);
                 });
             },
             DeleteContactFromList: function ($scope, $rootScope, index) {
@@ -78,13 +81,19 @@ angular.module('appServices', []).factory('AccountService', ['$http', '$location
                     username: $scope.user.username
                 });
             },
-            DeleteEmail: function ($scope, index) {
+            DeleteEmail: function ($scope, $rootScope, index) {
                 $http.post('/api/deleteEmail', {
                     username: $scope.user.username,
                     id: index
+                }).success(function () {
+                    $http.get('/loggedin').success(function (data) {
+                        $scope.user = data;
+                        $scope.chosenList = $scope.user.lists[$rootScope.ListIndex];
+                    });
+
                 });
             },
-            CreateEmail: function ($scope, newMailName, newMailBody) {
+            CreateEmail: function ($scope, $rootScope, newMailName, newMailBody) {
                 $http.post('/api/createNewMail', {
                     username: $scope.user.username,
                     name: newMailName,

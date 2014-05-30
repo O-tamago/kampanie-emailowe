@@ -9,9 +9,41 @@ var User = mongoose.model('User', {
     emailPassword: String,
     lists: [{
         name: String,
-        mails: []
+        contacts: [
+            {
+                firstName: String,
+                lastName: String,
+                email: String
+            }
+        ]
     }],
-    campaigns: []
+    campaigns: [{
+        name: String,
+        startDate: String,
+        endDate: String,
+        active: Boolean,
+        contacts: [
+            {
+                firstName: String,
+                lastName: String,
+                email: String
+            }
+        ],
+        Mail: [{
+            date: Date,
+            time: Date,
+            contact: String,
+            subject: String,
+            content: String
+        }],
+
+    }],
+    emailLayouts: [
+        {
+            name: String,
+            body: String
+        }
+    ]
 
 
 });
