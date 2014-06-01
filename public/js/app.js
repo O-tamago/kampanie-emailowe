@@ -1,1 +1,1 @@
-angular.module('project', ['ngRoute', 'appRoutes', 'AccountCtrl', 'LoginCtrl', 'RegisterCtrl', 'appServices']);
+angular.module('project', ['ngRoute', 'ui.bootstrap', 'appRoutes', 'appServices', 'AccountCtrl', 'LoginCtrl', 'RegisterCtrl', 'InformationCtrl']);

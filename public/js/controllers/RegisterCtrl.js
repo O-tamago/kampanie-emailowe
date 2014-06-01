@@ -1,5 +1,5 @@
-angular.module('RegisterCtrl', []).controller('RegisterController', ['$scope', '$http', '$location', '$rootScope',
-    function ($scope, $http, $location, $rootScope) {
+angular.module('RegisterCtrl', []).controller('RegisterController', ['$scope', '$http', '$location', '$rootScope', '$modalInstance',
+    function ($scope, $http, $location, $rootScope, $modalInstance) {
         $scope.tagline = "Registration page";
         $scope.user = {};
         $scope.register = function () {
@@ -13,8 +13,13 @@ angular.module('RegisterCtrl', []).controller('RegisterController', ['$scope', '
 
                 }).success(function () {
                     $location.url('/account');
+                    $modalInstance.dismiss('cancel');
+
                 });
 
             });
         };
+        $scope.closeModal = function () {
+            $modalInstance.dismiss('cancel');
+        }
 }]);

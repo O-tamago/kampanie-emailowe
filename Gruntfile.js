@@ -16,7 +16,7 @@ module.exports = function (grunt) {
 
         watch: {
             scripts: {
-                files: ['public/js/controllers/AccountCtrl.js', 'public/js/services/appServices.js', 'public/js/controllers/LoginCtrl.js', 'public/js/controllers/RegisterCtrl.js',
+                files: ['public/js/controllers/AccountCtrl.js', 'public/js/services/appServices.js', 'public/js/controllers/LoginCtrl.js', 'public/js/controllers/RegisterCtrl.js', 'public/js/controllers/InformationCtrl.js',
                     'public/js/appRoutes.js', 'public/js/app.js'],
                 tasks: ['concat', 'uglify'],
 
@@ -45,7 +45,7 @@ module.exports = function (grunt) {
                 separator: ';',
             },
             dist: {
-                src: ['public/js/controllers/AccountCtrl.js', 'public/js/services/appServices.js', 'public/js/controllers/LoginCtrl.js', 'public/js/controllers/RegisterCtrl.js',
+                src: ['public/js/controllers/AccountCtrl.js', 'public/js/services/appServices.js', 'public/js/controllers/LoginCtrl.js', 'public/js/controllers/RegisterCtrl.js', 'public/js/controllers/InformationCtrl.js',
                     'public/js/appRoutes.js', 'public/js/app.js'],
                 dest: 'public/js/dest/built.js',
             },

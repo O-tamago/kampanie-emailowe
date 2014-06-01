@@ -1,5 +1,5 @@
-angular.module('AccountCtrl', []).controller('AccountController', ['$scope', '$http', '$location', '$rootScope', '$routeParams', '$state', 'AccountService',
-        function ($scope, $http, $location, $rootScope, $routeParams, $state, AccountService) {
+angular.module('AccountCtrl', []).controller('AccountController', ['$scope', '$http', '$location', '$rootScope', '$routeParams', '$state', 'AccountService', '$modal',
+        function ($scope, $http, $location, $rootScope, $routeParams, $state, AccountService, $modal) {
 
         $scope.edit = true;
         $rootScope.loggedIn = false;
@@ -8,6 +8,20 @@ angular.module('AccountCtrl', []).controller('AccountController', ['$scope', '$h
         $rootScope.message = '';
 
         AccountService.GetUserData($scope, $rootScope);
+        $scope.loginModal = function () {
+            var loginModalInstance = $modal.open({
+                templateUrl: 'views/login.html',
+                controller: 'LoginController',
+                size: 'sm'
+            });
+        }
+        $scope.registrationModal = function () {
+            var registrationModalInstance = $modal.open({
+                templateUrl: 'views/registration.html',
+                controller: 'RegisterController',
+                size: 'sm'
+            });
+        }
 
         $scope.sendMail = function () {
             $http.post("/api/sendmail").error(function (data) {
@@ -209,8 +223,8 @@ angular.module('AccountCtrl', []).controller('AccountController', ['$scope', '$h
                 });
             }
         }
-}]);;angular.module("LoginCtrl", []).controller("LoginController", ['$scope', '$rootScope', '$http', '$location',
-        function ($scope, $rootScope, $http, $location) {
+}]);;angular.module("LoginCtrl", []).controller("LoginController", ['$scope', '$rootScope', '$http', '$location', '$modalInstance',
+        function ($scope, $rootScope, $http, $location, $modalInstance) {
         $scope.tagline = "Login page";
         $scope.user = {};
         $scope.login = function () {
@@ -219,13 +233,17 @@ angular.module('AccountCtrl', []).controller('AccountController', ['$scope', '$h
                 password: $scope.user.password
             }).success(function (user) {
                 $location.url('/account');
+                $modalInstance.dismiss('cancel');
 
             }).error(function (user) {
                 $location.url("/login");
             });
         }
-}]);;angular.module('RegisterCtrl', []).controller('RegisterController', ['$scope', '$http', '$location', '$rootScope',
-    function ($scope, $http, $location, $rootScope) {
+        $scope.closeModal = function () {
+            $modalInstance.dismiss('cancel');
+        }
+}]);;angular.module('RegisterCtrl', []).controller('RegisterController', ['$scope', '$http', '$location', '$rootScope', '$modalInstance',
+    function ($scope, $http, $location, $rootScope, $modalInstance) {
         $scope.tagline = "Registration page";
         $scope.user = {};
         $scope.register = function () {
@@ -239,10 +257,20 @@ angular.module('AccountCtrl', []).controller('AccountController', ['$scope', '$h
 
                 }).success(function () {
                     $location.url('/account');
+                    $modalInstance.dismiss('cancel');
+
                 });
 
             });
         };
+        $scope.closeModal = function () {
+            $modalInstance.dismiss('cancel');
+        }
+}]);;angular.module('InformationCtrl', []).controller('InformationController', ['$scope', '$modal',
+    function ($scope, $modal) {
+        $scope.title = "information page";
+
+
 }]);;angular.module('appRoutes', ['ui.router']).config(['$locationProvider', '$httpProvider', '$stateProvider', '$urlRouterProvider',
         function ($locationProvider, $httpProvider, $stateProvider, $urlRouterProvider) {
 
@@ -292,29 +320,26 @@ angular.module('AccountCtrl', []).controller('AccountController', ['$scope', '$h
         //================================================
         // ROUTES
         //================================================
-        $urlRouterProvider.otherwise('/account');
+        $urlRouterProvider.otherwise('/information');
         $stateProvider
-            .state('login', {
-                url: '/login',
-                templateUrl: 'views/login.html',
-                controller: 'LoginController'
+            .state('information', {
+                url: '/information',
+                templateUrl: 'views/information.html',
+                controller: 'InformationController'
             })
-            .state('registration', {
-                url: '/registration',
-                templateUrl: 'views/registration.html',
-                controller: 'RegisterController'
-            })
-            .state('account', {
-                url: '/account',
-                templateUrl: 'views/account.html',
-                controller: 'AccountController',
-                resolve: {
-                    loggedin: checkLoggedin,
-                }
-            })
-            .state('account.details', {
-                templateUrl: 'views/account-details.html'
-            })
+
+        .state('account', {
+            url: '/account',
+            templateUrl: 'views/account.html',
+            controller: 'AccountController',
+            resolve: {
+                loggedin: checkLoggedin,
+            }
+        })
+
+        .state('account.details', {
+            templateUrl: 'views/account-details.html'
+        })
             .state('account.lists', {
                 templateUrl: 'views/account-lists.html'
             })
@@ -342,4 +367,4 @@ angular.module('AccountCtrl', []).controller('AccountController', ['$scope', '$h
 
         $locationProvider.html5Mode(true);
 
-}]);;angular.module('project', ['ngRoute', 'appRoutes', 'AccountCtrl', 'LoginCtrl', 'RegisterCtrl', 'appServices']);
+}]);;angular.module('project', ['ngRoute', 'ui.bootstrap', 'appRoutes', 'appServices', 'AccountCtrl', 'LoginCtrl', 'RegisterCtrl', 'InformationCtrl']);

@@ -146,7 +146,7 @@ body {
 .columnWidth input {
     width: 200px;
 }
-@media (min-width: 60px) {
+@media (min-width: 50px) {
     .newContactInput {
         float: left;
     }

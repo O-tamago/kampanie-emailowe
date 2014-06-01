@@ -47,29 +47,26 @@ angular.module('appRoutes', ['ui.router']).config(['$locationProvider', '$httpPr
         //================================================
         // ROUTES
         //================================================
-        $urlRouterProvider.otherwise('/account');
+        $urlRouterProvider.otherwise('/information');
         $stateProvider
-            .state('login', {
-                url: '/login',
-                templateUrl: 'views/login.html',
-                controller: 'LoginController'
+            .state('information', {
+                url: '/information',
+                templateUrl: 'views/information.html',
+                controller: 'InformationController'
             })
-            .state('registration', {
-                url: '/registration',
-                templateUrl: 'views/registration.html',
-                controller: 'RegisterController'
-            })
-            .state('account', {
-                url: '/account',
-                templateUrl: 'views/account.html',
-                controller: 'AccountController',
-                resolve: {
-                    loggedin: checkLoggedin,
-                }
-            })
-            .state('account.details', {
-                templateUrl: 'views/account-details.html'
-            })
+
+        .state('account', {
+            url: '/account',
+            templateUrl: 'views/account.html',
+            controller: 'AccountController',
+            resolve: {
+                loggedin: checkLoggedin,
+            }
+        })
+
+        .state('account.details', {
+            templateUrl: 'views/account-details.html'
+        })
             .state('account.lists', {
                 templateUrl: 'views/account-lists.html'
             })

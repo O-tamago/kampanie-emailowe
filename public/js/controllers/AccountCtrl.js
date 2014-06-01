@@ -1,5 +1,5 @@
-angular.module('AccountCtrl', []).controller('AccountController', ['$scope', '$http', '$location', '$rootScope', '$routeParams', '$state', 'AccountService',
-        function ($scope, $http, $location, $rootScope, $routeParams, $state, AccountService) {
+angular.module('AccountCtrl', []).controller('AccountController', ['$scope', '$http', '$location', '$rootScope', '$routeParams', '$state', 'AccountService', '$modal',
+        function ($scope, $http, $location, $rootScope, $routeParams, $state, AccountService, $modal) {
 
         $scope.edit = true;
         $rootScope.loggedIn = false;
@@ -8,6 +8,20 @@ angular.module('AccountCtrl', []).controller('AccountController', ['$scope', '$h
         $rootScope.message = '';
 
         AccountService.GetUserData($scope, $rootScope);
+        $scope.loginModal = function () {
+            var loginModalInstance = $modal.open({
+                templateUrl: 'views/login.html',
+                controller: 'LoginController',
+                size: 'sm'
+            });
+        }
+        $scope.registrationModal = function () {
+            var registrationModalInstance = $modal.open({
+                templateUrl: 'views/registration.html',
+                controller: 'RegisterController',
+                size: 'sm'
+            });
+        }
 
         $scope.sendMail = function () {
             $http.post("/api/sendmail").error(function (data) {

@@ -10,25 +10,27 @@
     <br/>
     <div id="newContactForm">
 
+        <h3>Add new contact</h3> 
         <form ng-submit="AddAddressToList(chosenList._id,contactFirstName,contactLastName,contactEmail)">
             <div class="row">
-                <div class="newContactInput col-md-4">
-                    <label for="firstname">First name</label>
-                    <input type="text" id="firstName" name="firstName" ng-model="contactFirstName" class="form-control" required />
+                <div class="newContactInput col-md-3">
+                    <!--                    <label for="firstname">First name</label>-->
+                    <input type="text" id="firstName" name="firstName" ng-model="contactFirstName" class="form-control" required placeholder="First name" />
                 </div>
-                <div class="newContactInput col-md-4">
+                <div class="newContactInput col-md-3">
 
+                    <!--
                     <label for="lastname">Last name</label>
-                    <input type="text" id="lastname" name="lastname" ng-model="contactLastName" class="form-control" required/>
+-->
+                    <input type="text" id="lastname" name="lastname" ng-model="contactLastName" class="form-control" required placeholder="Last name" />
                 </div>
-                <div class="newContactInput col-md-4">
-                    <label for="email">Email</label>
-                    <input type="text" id="email" name="email" ng-model="contactEmail" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" class="form-control" required />
+                <div class="newContactInput col-md-3">
+                    <!--<label for="email">Email</label>-->
+                    <input type="text" id="email" name="email" ng-model="contactEmail" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" class="form-control" required placeholder="Email" />
                 </div>
-            </div>
-            <br/>
-            <div class="newContactInput pull-right">
-                <input type="submit" value="Add new" class="btn btn-success" />
+                <div class="newContactInput col-md-3 ">
+                    <input type="submit" value="Add" class="btn btn-success" />
+                </div>
             </div>
 
         </form>
