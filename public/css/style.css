@@ -112,6 +112,11 @@ body {
         display: block;
     }
 }
+@media (min-width: 760px) {
+    .responsiveTableTitle {
+        display: none;
+    }
+}
 <!-- FORMS--> #newContactForm {
     border: 0px solid black;
 }
@@ -127,17 +132,6 @@ body {
     float: left;
     padding: 5px;
 }
-#searchContactDiv {
-    border: 0px solid black;
-}
-#searchContactDiv label {
-    float: left;
-    padding: 5px;
-}
-#searchContactDiv #searchTextBox {
-    float: left;
-    width: 150px;
-}
 #emailIcon {
     border: 1px solid black;
     overflow: hidden;
@@ -151,6 +145,65 @@ body {
         float: left;
     }
 }
-.table tr:nth-child(even) {
-    background: lightgrey;
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {} <!-- responsive list table -->
+/* 
+Generic Styling, for Desktops/Laptops 
+*/
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th {
+    background: #333;
+    color: white;
+    font-weight: bold;
+}
+td,
+th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Force table to not be like tables anymore */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr {
+        border: 1px solid #ccc;
+    }
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+    .columnWidth input {
+        width: 100%;
+    }
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
 }
